@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Ecommerce</title>
+    <title>Ticketing System</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -26,8 +26,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- jquery link --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    {{-- toastify css --}}
+    @toastifyCss
 
     <!-- Customm css -->
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet">
@@ -41,170 +45,15 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
                 <img src="{{ asset('admin/assets/img/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">Ecommerce</span>
+                <span class="d-none d-lg-block">Ticketing System</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
-
-                <li class="nav-item dropdown">
-
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="badge bg-primary badge-number">4</span>
-                    </a><!-- End Notification Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                        <li class="dropdown-header">
-                            You have 4 new notifications
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                            <div>
-                                <h4>Lorem Ipsum</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>30 min. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-x-circle text-danger"></i>
-                            <div>
-                                <h4>Atque rerum nesciunt</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>1 hr. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-check-circle text-success"></i>
-                            <div>
-                                <h4>Sit rerum fuga</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>2 hrs. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="notification-item">
-                            <i class="bi bi-info-circle text-primary"></i>
-                            <div>
-                                <h4>Dicta reprehenderit</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>4 hrs. ago</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-footer">
-                            <a href="#">Show all notifications</a>
-                        </li>
-
-                    </ul><!-- End Notification Dropdown Items -->
-
-                </li><!-- End Notification Nav -->
-
-                <li class="nav-item dropdown">
-
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="fa-regular fa-message"></i>
-                        <span class="badge bg-success badge-number">3</span>
-                    </a><!-- End Messages Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                        <li class="dropdown-header">
-                            You have 3 new messages
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="{{ asset('admin/assets/img/messages-1.jpg') }}" alt=""
-                                    class="rounded-circle">
-                                <div>
-                                    <h4>Maria Hudson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>4 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="{{ asset('admin/assets/img/messages-1.jpg') }}" alt=""
-                                    class="rounded-circle">
-                                <div>
-                                    <h4>Anna Nelson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>6 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="{{ asset('admin/assets/img/messages-1.jpg') }}" alt=""
-                                    class="rounded-circle">
-                                <div>
-                                    <h4>David Muldon</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>8 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="dropdown-footer">
-                            <a href="#">Show all messages</a>
-                        </li>
-
-                    </ul><!-- End Messages Dropdown Items -->
-
-                </li><!-- End Messages Nav -->
 
                 <li class="nav-item dropdown pe-3">
 
@@ -212,13 +61,13 @@
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('admin/assets/img/profile-img.jpg') }}" alt="Profile"
                             class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            <h6>{{ Auth::user()->name }}</h6>
+                            <span>Web Developer</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -244,18 +93,13 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -275,47 +119,48 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.home') }}">
                     <i class="fa-solid fa-gauge-high"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="fa-solid fa-users"></i><span>User Management</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="#">
-                            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                        <a href="{{ route('roles.index') }}">
+                            <i class="fa-solid fa-dice-d6 fs-6"></i><span>Roles</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="bi bi-circle"></i><span>Remix Icons</span>
+                            <i class="fa-solid fa-user fs-6"></i><span>User</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="bi bi-circle"></i><span>Boxicons</span>
+                            <i class="fa-solid fa-user-lock fs-6"></i><span>Permission</span>
                         </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="">
                     <i class="fa-solid fa-list"></i>
-                    <span>Category</span>
+                    <span>Roles</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
-                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span>Logout</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -329,7 +174,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Ecommerce</h1>
+            <h1>Ticketing System</h1>
 
         </div><!-- End Page Title -->
 
@@ -359,6 +204,8 @@
 
     <!-- custom js -->
     <script src="{{ asset('admin/assets/js/main.js') }}"></script>
+    {{-- toastify js --}}
+    @toastifyJs
 
     @stack('script')
 
