@@ -18,7 +18,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="resetFields()">Close</button>
-          <button type="button" class="btn btn-primary" wire:click.prevent="update()">Update</button>
+          <button type="button" class="btn btn-primary" wire:click.prevent="update({{$id}})">Update</button>
         </div>
       </div>
     </div>
