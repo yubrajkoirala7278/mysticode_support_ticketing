@@ -1,4 +1,3 @@
-{{-- create roles --}}
 <div class="modal fade" wire:ignore.self id="createRoles" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="createRolesLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -10,7 +9,6 @@
                         wire:click="resetFields()"></button>
                 </div>
                 <div class="modal-body">
-
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" wire:model="name">
@@ -18,7 +16,6 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
