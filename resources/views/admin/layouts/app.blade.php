@@ -132,12 +132,12 @@
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('roles.index') }}">
+                        <a href="{{ route('admin.roles') }}">
                             <i class="fa-solid fa-dice-d6 fs-6"></i><span>Roles</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('admin.users')}}">
                             <i class="fa-solid fa-user fs-6"></i><span>User</span>
                         </a>
                     </li>
