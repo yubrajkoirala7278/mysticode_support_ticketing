@@ -1,10 +1,12 @@
 @extends('admin.layouts.app')
 @section('content')
-    {{-- create roles --}}
-    @include('livewire.admin.role.create')
-    {{-- edit role --}}
-    @include('livewire.admin.role.edit')
     <div class="p-4 bg-white">
+        
+        {{-- create roles --}}
+        @include('livewire.admin.role.create')
+        {{-- edit role --}}
+        @include('livewire.admin.role.edit')
+
         <div class="d-flex align-items-center justify-content-between">
             <h2 class="fw-semibold fs-4 text-success">Roles</h2>
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createRoles">
@@ -23,20 +25,21 @@
                 <tbody>
                     @if ($roles->count() > 0)
                         @foreach ($roles as $key => $role)
-                            <tr>
+                            <tr :key="{{$key}}">
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-transparent p-0 me-2" data-bs-toggle="modal"
                                         data-bs-target="#editRoles" data-toggle="tooltip" title="Edit Role"
-                                        wire:click="edit({{$role->id}})">
+                                        wire:click="edit({{ $role->id }})">
                                         <i class="fa-solid fa-pencil text-warning fs-5"></i>
                                     </button>
 
 
                                     </button>
 
-                                    <button class="btn btn-transparent p-0" wire:confirm="Are you sure you want to delete this role?"
+                                    <button class="btn btn-transparent p-0"
+                                        wire:confirm="Are you sure you want to delete this role?"
                                         wire:click="destroy({{ $role->id }})" data-toggle="tooltip"
                                         title="Delete Role"><i class="fa-solid fa-trash text-danger fs-5"></i></button>
                                 </td>

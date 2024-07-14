@@ -29,7 +29,7 @@
                 <tbody>
                     @if ($users->count() > 0)
                         @foreach ($users as $key => $user)
-                            <tr>
+                            <tr :key={{$key}}>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
