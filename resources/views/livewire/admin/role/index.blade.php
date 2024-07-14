@@ -35,6 +35,7 @@
 
 
                                     </button>
+
                                     <button class="btn btn-transparent p-0" wire:confirm="Are you sure you want to delete this role?"
                                         wire:click="destroy({{ $role->id }})" data-toggle="tooltip"
                                         title="Delete Role"><i class="fa-solid fa-trash text-danger fs-5"></i></button>
