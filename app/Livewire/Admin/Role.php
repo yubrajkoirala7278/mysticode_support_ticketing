@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Role as ModelsRole;
+use App\Repositories\Interfaces\RoleRepositoryInterface;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,28 +13,35 @@ class Role extends Component
     protected $paginationTheme = 'bootstrap';
 
     // ========properties===========
+    private $roleRepository;
     public $name;
-    public $role_id = null;
+    public $id = null;
 
     // ========validation==========
     function rules()
     {
         return [
-            'name' => 'required|string|max:255|unique:roles,name,' . $this->role_id,
+            'name' => 'required|string|max:255|unique:roles,name,' . $this->id,
         ];
+    }
+    // =========boot========
+    public function boot(RoleRepositoryInterface $roleRepository)
+    {
+        $this->roleRepository = $roleRepository;
     }
 
     // ===========reset fields=====
     public function resetFields()
     {
-        $this->reset('name', 'role_id');
+        $this->reset('name', 'id');
         $this->resetErrorBag();
     }
+
 
     // =======render============
     public function render()
     {
-        $roles = ModelsRole::latest()->paginate(10);
+        $roles = $this->roleRepository->all();
         return view('livewire.admin.role', [
             'roles' => $roles
         ]);
@@ -44,10 +52,7 @@ class Role extends Component
     {
         $validatedData = $this->validate();
         try {
-            ModelsRole::create([
-                'name' => $validatedData['name'],
-                'guard_name' => 'web'
-            ]);
+            $this->roleRepository->store($validatedData);
             $this->dispatch('success', title: 'Role created successfully!');
             // reset fields
             $this->resetFields();
@@ -56,38 +61,35 @@ class Role extends Component
         }
     }
 
-    // ========destroy=======
-    public function delete($id)
-    {
-        try {
-            ModelsRole::where('id', $id)->delete();
-            $this->dispatch('delete', title: 'Role deleted successfully!');
-        } catch (\Throwable $th) {
-            $this->dispatch('error', title: $th->getMessage());
-        }
-    }
 
     // ==============update============
-    public function edit($id)
+    public function edit(ModelsRole $role)
     {
-        $this->role_id = $id;
         try {
-            $role = ModelsRole::findOrFail($id);
+            $this->id = $role->id;
             $this->name = $role->name;
         } catch (\Throwable $th) {
             $this->dispatch('error', title: $th->getMessage());
         }
     }
-    public function update()
+    public function update(ModelsRole $role)
     {
         $validatedData = $this->validate();
         try {
-            if ($this->role_id) {
-                $role = ModelsRole::findOrFail($this->role_id);
-                $role->update($validatedData);
-                $this->dispatch('success', title: 'Role updated successfully!');
-                $this->resetFields();
-            }
+            $this->roleRepository->update($role, $validatedData);
+            $this->dispatch('success', title: 'Role updated successfully!');
+            $this->resetFields();
+        } catch (\Throwable $th) {
+            $this->dispatch('error', title: $th->getMessage());
+        }
+    }
+
+    // ========destroy=======
+    public function destroy(ModelsRole $role)
+    {
+        try {
+            $this->roleRepository->destroy($role);
+            $this->dispatch('delete', title: 'Role deleted successfully!');
         } catch (\Throwable $th) {
             $this->dispatch('error', title: $th->getMessage());
         }

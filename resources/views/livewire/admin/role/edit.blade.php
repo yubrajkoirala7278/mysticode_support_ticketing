@@ -25,13 +25,11 @@
                 </div>
             </form>
         </div>
-<<<<<<< Updated upstream
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="resetFields()">Close</button>
           <button type="button" class="btn btn-primary" wire:click.prevent="update()">Update</button>
         </div>
       </div>
-=======
->>>>>>> Stashed changes
     </div>
 </div>
