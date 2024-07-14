@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class Role extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     // ========properties===========
     private $roleRepository;

@@ -43,7 +43,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name');
         return view('auth.register', compact('roles'));
     }
 
