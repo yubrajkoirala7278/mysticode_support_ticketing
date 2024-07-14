@@ -35,8 +35,13 @@
 
 
                                     </button>
+<<<<<<< Updated upstream
                                     <button class="btn btn-transparent p-0" wire:confirm="Are you sure you want to delete?"
                                         wire:click="delete({{ $role->id }})" data-toggle="tooltip"
+=======
+                                    <button class="btn btn-transparent p-0" wire:confirm="Are you sure you want to delete this role?"
+                                        wire:click="destroy({{ $role->id }})" data-toggle="tooltip"
+>>>>>>> Stashed changes
                                         title="Delete Role"><i class="fa-solid fa-trash text-danger fs-5"></i></button>
                                 </td>
                             </tr>
@@ -49,8 +54,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="d-flex justify-content-end mt-3">
-            {{ $roles->links('livewire.pagination') }}
+        <div class="d-flex justify-content-end mt-3 pagination">
+            {{ $roles->links() }}
         </div>
     </div>
 @endsection
